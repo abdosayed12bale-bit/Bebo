@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bebo ❤️</title>
+</head>
+
+<body style="text-align:center;font-family:Arial;background:black;color:white">
+
+<h2>Enter Password</h2>
+
+<input type="password" id="pass">
+<button onclick="check()">Enter</button>
+
+<div id="secret" style="display:none;margin-top:20px;">
+<h1>For Bebo ❤️</h1>
+<p>
+انتي جميله اوي بالنسبالي  
+ووجودك في حياتي حاجه مهمه  
+واهم حاجه عندي اني اكلمك كل يوم
+</p>
+</div>
+
+<script>
+
+function check(){
+
+var password="2006";
+
+var input=document.getElementById("pass").value;
+
+if(input===password){
+document.getElementById("secret").style.display="block";
+}else{
+alert("Wrong Password");
+}
+
+}
+
+</script>
+
+</body>
+</html>
