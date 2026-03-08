@@ -1,41 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-<title>Bebo ❤️</title>
+<meta charset="UTF-8">
+<title>عيد ميلاد سعيد يا Bebo 🎉</title>
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  color:black;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  overflow:hidden;
+}
+
+.box{
+  background: rgba(255,255,255,0.8);
+  padding:30px 40px;
+  border-radius:20px;
+  box-shadow:0 0 30px #ff4d6d;
+}
+
+input{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  width:220px;
+  margin-top:10px;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+#secret{
+  display:none;
+  margin-top:20px;
+  line-height:1.6;
+  animation:fade 1.5s;
+}
+
+img{
+  width:250px;
+  border-radius:15px;
+  margin-top:20px;
+}
+
+.heart{
+  position:absolute;
+  color:red;
+  font-size:20px;
+  animation:fall 5s linear infinite;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.8);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+
+</style>
 </head>
+<body>
 
-<body style="text-align:center;font-family:Arial;background:black;color:white">
+<div class="box">
+<h2>اكتب الباسورد 🔒</h2>
+<input type="password" id="pass" placeholder="الباسورد">
+<br>
+<button onclick="check()">دخول</button>
 
-<h2>Enter Password</h2>
-
-<input type="password" id="pass">
-<button onclick="check()">Enter</button>
-
-<div id="secret" style="display:none;margin-top:20px;">
-<h1>For Bebo ❤️</h1>
+<div id="secret">
+<h1>كل سنة وانتي طيبة يا Bebo 🎉💙</h1>
 <p>
-انتي جميله اوي بالنسبالي  
-ووجودك في حياتي حاجه مهمه  
-واهم حاجه عندي اني اكلمك كل يوم
+خلاص الصغنن كبر وبقا عنده 18 سنة. كل سنة وانتي بخير و بصحة. كل سنة وانتي دايمًا مبسوطه. كل سنة وانتي بتحلوي أكتر. كل سنة وانتي محققة الي نفسك فيه. ممكن متتوقعيش مني اني اعمل كدا، بس مينفعش أعدي اليوم ده عادي. ده يوم أحلي من كل الأيام عشان بقيتي موجوده في الدنيا يوم ولا ألف يوم. كل سنة يا Bebo و يارب تكون سنة سعيدة عليكي و تحققي كل الي نفسك فيه و ربنا يوفقك في امتحاناتك. بدعيلك كل صلاة تنجحي و تكوني أحسن دكتوره في الدنيا و لحد دلوقتي وثق انك هتقدري تعمليها. خلي بالك من مذاكرتك و من نفسك و متخليش حد يزعلك ولا يشكك في نفسك. انتي أحسن من أي حد، خليكي عارفه ده 🩵🩵😍😍🥳
 </p>
+<img src="birthday_photo.jpg" alt="صورة عيد ميلاد">
+</div>
 </div>
 
 <script>
-
 function check(){
-
-var password="2006";
-
-var input=document.getElementById("pass").value;
-
-if(input===password){
-document.getElementById("secret").style.display="block";
-}else{
-alert("Wrong Password");
+  var password="14/3/2008";
+  var input=document.getElementById("pass").value;
+  if(input===password){
+    document.getElementById("secret").style.display="block";
+  }else{
+    alert("الباسورد غلط");
+  }
 }
 
-}
-
+// قلوب متحركة
+setInterval(function(){
+  var heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(Math.random()*20+10)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>{heart.remove();},5000);
+},500);
 </script>
 
 </body>
