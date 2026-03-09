@@ -69,17 +69,11 @@ img{
 .heart, .confetti{
   position:absolute;
   font-size:20px;
-  animation:fall 5s linear infinite;
 }
 
 .confetti{
   font-size:16px;
   color:gold;
-}
-
-@keyframes fall{
-0%{transform:translateY(-100px);}
-100%{transform:translateY(100vh);}
 }
 
 .bebo{
@@ -91,6 +85,10 @@ img{
 }
 
 @keyframes move{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
+}
+@keyframes fall{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(100vh);}
 }
@@ -114,8 +112,8 @@ for(let i=0;i<50;i++){
 </script>
 
 <div class="box">
-<h2> تاريخ ميلادك يصغنن 🩵🩵</h2>
-<input type="text" id="pass" placeholder="">
+<h2>ادخل الباسورد (تاريخ ميلادك يصغنن 🩵🩵)</h2>
+<input type="text" id="pass" placeholder="مثال: 14/3/2008">
 <br>
 <button onclick="check()">دخول</button>
 
@@ -132,7 +130,7 @@ for(let i=0;i<50;i++){
 <p>ربنا يوفقك في امتحاناتك، بدعيلك كل صلاة تنجحي و تكوني أحسن دكتوره في الدنيا.</p>
 <p>لحد دلوقتي ثق انك هتقدري تعمليها.</p>
 <p>خلي بالك من مذاكرتك و من نفسك و متخليش حد يزعلك ولا يشكك في نفسك.</p>
-<p>😍😍🩵🥳انتي أحسن من أي حد، خليكي عارفه ده </p>
+<p>انتي أحسن من أي حد، خليكي عارفه ده 🩵🩵😍😍🥳</p>
 <img src="birthday_photo.jpg" alt="صورة عيد ميلاد" onerror="this.style.display='none'">
 </div>
 </div>
@@ -144,34 +142,39 @@ function check(){
   if(input===password){
     document.getElementById('secret').style.display='block';
     document.getElementById('pass').style.display='none';
+    document.querySelector('button').style.display='none';
+
+    // نبدأ القلوب و Confetti بعد ظهور الرسالة
+    startHeartsAndConfetti();
   }else{
     alert('التاريخ غلط 😅 حاول تاني');
   }
 }
 
-// قلوب متحركة
-setInterval(function(){
-  var heart=document.createElement("div");
-  heart.className="heart";
-  heart.innerHTML="❤️";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(Math.random()*20+10)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>{heart.remove();},5000);
-},500);
+// الدالة لتشغيل القلوب و Confetti بعد ظهور الرسالة
+function startHeartsAndConfetti(){
+  setInterval(function(){
+    var heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},5000);
+  },500);
 
-// Confetti متحرك
-setInterval(function(){
-  var confetti=document.createElement("div");
-  confetti.className="confetti";
-  confetti.innerHTML="🎊";
-  confetti.style.left=Math.random()*100+"vw";
-  confetti.style.fontSize=(Math.random()*20+10)+"px";
-  document.body.appendChild(confetti);
-  setTimeout(()=>{confetti.remove();},5000);
-},400);
+  setInterval(function(){
+    var confetti=document.createElement("div");
+    confetti.className="confetti";
+    confetti.innerHTML="🎊";
+    confetti.style.left=Math.random()*100+"vw";
+    confetti.style.fontSize=(Math.random()*20+10)+"px";
+    document.body.appendChild(confetti);
+    setTimeout(()=>{confetti.remove();},5000);
+  },400);
+}
 
-// خلفية متغيرة تدريجيًا
+// الخلفية المتغيرة
 setInterval(function(){
   var colors = ['#ff9a9e','#fad0c4','#a1c4fd','#c2e9fb','#fbc2eb','#a6c1ee'];
   document.body.style.background = "linear-gradient(135deg," + colors[Math.floor(Math.random()*colors.length)] + ",#fff)";
