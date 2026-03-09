@@ -26,10 +26,36 @@ body{
   max-width:500px;
 }
 
+input{
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  width:220px;
+  margin-top:10px;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:10px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+#secret{
+  display:none;
+  margin-top:20px;
+  line-height:1.6;
+  animation:fade 1.5s;
+  text-align:right;
+}
+
 p{
   margin:10px 0;
   text-align:right;
-  line-height:1.6;
 }
 
 img{
@@ -52,6 +78,11 @@ img{
   color:gold;
 }
 
+@keyframes fade{
+from{opacity:0;transform:scale(0.8);}
+to{opacity:1;transform:scale(1);}
+}
+
 @keyframes fall{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(100vh);}
@@ -61,6 +92,12 @@ img{
 <body>
 
 <div class="box">
+<h2>اكتب الباسورد 🔒</h2>
+<input type="password" id="pass" placeholder="الباسورد">
+<br>
+<button onclick="check()">دخول</button>
+
+<div id="secret">
 <p>كل سنة وانتي طيبة يا بيبو 🎉💙</p>
 <p>خلاص الصغنن كبر وبقا عنده 18 سنة.</p>
 <p>كل سنة وانتي بخير و بصحة.</p>
@@ -76,8 +113,20 @@ img{
 <p>انتي أحسن من أي حد، خليكي عارفه ده 🩵🩵😍😍🥳</p>
 <img src="birthday_photo.jpg" alt="صورة عيد ميلاد" onerror="this.style.display='none'">
 </div>
+</div>
 
 <script>
+function check(){
+  var password="14/3/2008";
+  var input=document.getElementById("pass").value;
+  if(input===password){
+    document.getElementById("secret").style.display="block";
+    document.getElementById("pass").style.display="none"; // يخفي الباسورد
+  }else{
+    alert("الباسورد غلط");
+  }
+}
+
 // قلوب متحركة
 setInterval(function(){
   var heart=document.createElement("div");
