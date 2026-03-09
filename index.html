@@ -7,15 +7,13 @@
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
-  color:black;
   height:100vh;
+  overflow:hidden;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
   display:flex;
   justify-content:center;
   align-items:center;
   text-align:center;
-  overflow:hidden;
-  transition: background 5s linear;
 }
 
 .box{
@@ -24,6 +22,8 @@ body{
   border-radius:20px;
   box-shadow:0 0 30px #ff4d6d;
   max-width:500px;
+  z-index:1;
+  position:relative;
 }
 
 input{
@@ -49,7 +49,6 @@ button{
   display:none;
   margin-top:20px;
   line-height:1.6;
-  animation:fade 1.5s;
   text-align:right;
 }
 
@@ -78,12 +77,20 @@ img{
   color:gold;
 }
 
-@keyframes fade{
-from{opacity:0;transform:scale(0.8);}
-to{opacity:1;transform:scale(1);}
+@keyframes fall{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(100vh);}
 }
 
-@keyframes fall{
+.bebo{
+  position:absolute;
+  font-size:50px;
+  font-weight:bold;
+  opacity:0.3;
+  animation:move 20s linear infinite;
+}
+
+@keyframes move{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(100vh);}
 }
@@ -91,9 +98,24 @@ to{opacity:1;transform:scale(1);}
 </head>
 <body>
 
+<!-- الخلفية مليانة bebo -->
+<script>
+let colors = ['#FF4D6D','#FFC300','#FF5733','#DAF7A6','#C70039','#900C3F','#581845','#33FFBD','#3380FF','#8C33FF'];
+for(let i=0;i<50;i++){
+  let b=document.createElement('div');
+  b.className='bebo';
+  b.innerText='بيبو';
+  b.style.left=Math.random()*90+'vw';
+  b.style.fontSize=(Math.random()*50+30)+'px';
+  b.style.color=colors[Math.floor(Math.random()*colors.length)];
+  b.style.top=Math.random()*100+'vh';
+  document.body.appendChild(b);
+}
+</script>
+
 <div class="box">
-<h2>اكتب الباسورد 🔒</h2>
-<input type="password" id="pass" placeholder="الباسورد">
+<h2>ادخل الباسورد (تاريخ ميلادك الصغير 🩵🩵)</h2>
+<input type="text" id="pass" placeholder="مثال: 14/3/2008">
 <br>
 <button onclick="check()">دخول</button>
 
@@ -117,13 +139,13 @@ to{opacity:1;transform:scale(1);}
 
 <script>
 function check(){
-  var password="14/3/2008";
-  var input=document.getElementById("pass").value;
+  let password="14/3/2008";
+  let input=document.getElementById('pass').value;
   if(input===password){
-    document.getElementById("secret").style.display="block";
-    document.getElementById("pass").style.display="none"; // يخفي الباسورد
+    document.getElementById('secret').style.display='block';
+    document.getElementById('pass').style.display='none';
   }else{
-    alert("الباسورد غلط");
+    alert('التاريخ غلط 😅 حاول تاني');
   }
 }
 
@@ -154,7 +176,6 @@ setInterval(function(){
   var colors = ['#ff9a9e','#fad0c4','#a1c4fd','#c2e9fb','#fbc2eb','#a6c1ee'];
   document.body.style.background = "linear-gradient(135deg," + colors[Math.floor(Math.random()*colors.length)] + ",#fff)";
 },5000);
-
 </script>
 
 </body>
