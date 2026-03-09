@@ -17,31 +17,37 @@ body{
 }
 
 .box{
-  background: rgba(255,255,255,0.85);
-  padding:30px 40px;
-  border-radius:20px;
-  box-shadow:0 0 30px #ff4d6d;
-  max-width:500px;
+  background: rgba(255,255,255,0.95);
+  padding:50px 60px;
+  border-radius:30px;
+  box-shadow:0 0 40px #ff4d6d;
+  max-width:600px;
+  width:90%;
   z-index:1;
   position:relative;
 }
 
+h2{
+  font-size:26px;
+  margin-bottom:30px;
+}
+
 input{
-  padding:12px;
+  padding:15px;
   border:none;
-  border-radius:10px;
-  width:220px;
-  margin-top:10px;
+  border-radius:12px;
+  width:260px;
+  font-size:18px;
 }
 
 button{
-  padding:12px 25px;
+  padding:15px 30px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   background:#ff4d6d;
   color:white;
-  font-size:16px;
-  margin-top:10px;
+  font-size:18px;
+  margin-top:20px;
   cursor:pointer;
 }
 
@@ -58,7 +64,7 @@ p{
 }
 
 img{
-  width:250px;
+  width:280px;
   border-radius:15px;
   margin-top:20px;
   display:block;
@@ -88,10 +94,6 @@ img{
 0%{transform:translateY(-100px);}
 100%{transform:translateY(100vh);}
 }
-@keyframes fall{
-0%{transform:translateY(-100px);}
-100%{transform:translateY(100vh);}
-}
 </style>
 </head>
 <body>
@@ -112,10 +114,10 @@ for(let i=0;i<50;i++){
 </script>
 
 <div class="box">
-<h2>ادخل الباسورد (تاريخ ميلادك يصغنن 🩵🩵)</h2>
-<input type="text" id="pass" placeholder="/">
+<h2>ادخل تاريخ ميلادك يصغنن 🩵🩵</h2>
+<input type="text" id="pass">
 <br>
-<button onclick="check()">دخول</button>
+<button onclick="check()">دوس يصغنن 🩵🩵</button>
 
 <div id="secret">
 <p>كل سنة وانتي طيبة يا بيبو 🎉💙</p>
@@ -130,7 +132,7 @@ for(let i=0;i<50;i++){
 <p>ربنا يوفقك في امتحاناتك، بدعيلك كل صلاة تنجحي و تكوني أحسن دكتوره في الدنيا.</p>
 <p>لحد دلوقتي ثق انك هتقدري تعمليها.</p>
 <p>خلي بالك من مذاكرتك و من نفسك و متخليش حد يزعلك ولا يشكك في نفسك.</p>
-<p> 😍😍🩵🥳انتي أحسن من أي حد، خليكي عارفه ده </p>
+<p>انتي أحسن من أي حد، خليكي عارفه ده 🩵🩵😍😍🥳</p>
 <img src="birthday_photo.jpg" alt="صورة عيد ميلاد" onerror="this.style.display='none'">
 </div>
 </div>
@@ -144,14 +146,13 @@ function check(){
     document.getElementById('pass').style.display='none';
     document.querySelector('button').style.display='none';
 
-    // نبدأ القلوب و Confetti بعد ظهور الرسالة
+    // القلوب و Confetti بعد ظهور الرسالة
     startHeartsAndConfetti();
   }else{
     alert('التاريخ غلط 😅 حاول تاني');
   }
 }
 
-// الدالة لتشغيل القلوب و Confetti بعد ظهور الرسالة
 function startHeartsAndConfetti(){
   setInterval(function(){
     var heart=document.createElement("div");
